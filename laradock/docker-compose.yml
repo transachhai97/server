@@ -1450,6 +1450,7 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/gitlab/runner:/etc/gitlab-runner
         - /var/run/docker.sock:/var/run/docker.sock:rw
+        - /usr/bin/docker:/usr/bin/docker
       restart: always
 
 ### JupyterHub #########################################
