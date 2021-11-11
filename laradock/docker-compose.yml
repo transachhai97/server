@@ -2048,3 +2048,15 @@ services:
         - ${TARANTOOL_ADMIN_PORT}:80
       networks:
         - backend
+
+### jira ###########################################
+    jira:
+      build:
+        context: ./jira
+      ports:
+        - "8080:8080"
+      networks:
+        - backend
+      volumes:
+        - ${DATA_PATH_HOST}/jira:/var/atlassian/jira
+        - ./jira/atlassian-agent.jar:/var/atlassian/jira/atlassian-agent.jar
