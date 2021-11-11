@@ -1446,12 +1446,15 @@ services:
         - REGISTRATION_TOKEN=${GITLAB_RUNNER_REGISTRATION_TOKEN}
         - RUNNER_NAME=${COMPOSE_PROJECT_NAME}-runner
         - REGISTER_NON_INTERACTIVE=${GITLAB_REGISTER_NON_INTERACTIVE}
-        - RUNNER_EXECUTOR=shell
+        - RUNNER_EXECUTOR=docker
+        - DOCKER_IMAGE=latest
+        - DOCKER_NETWORK_MODE=laradock_backend
       volumes:
         - ${DATA_PATH_HOST}/gitlab/runner:/etc/gitlab-runner
         - /var/run/docker.sock:/var/run/docker.sock:rw
-        - /usr/bin/docker:/usr/bin/docker
       restart: always
+      networks:
+        - backend
 
 ### JupyterHub #########################################
     jupyterhub:
