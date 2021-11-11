@@ -1453,6 +1453,8 @@ services:
         - ${DATA_PATH_HOST}/gitlab/runner:/etc/gitlab-runner
         - /var/run/docker.sock:/var/run/docker.sock:rw
       restart: always
+      networks:
+        - backend # connect to network where gitlab service is connected
 
 ### JupyterHub #########################################
     jupyterhub:
