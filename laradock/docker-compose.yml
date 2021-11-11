@@ -2060,7 +2060,3 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/jira:/var/atlassian/jira
         - ./jira/atlassian-agent.jar:/var/atlassian/jira/atlassian-agent.jar
-
-    jira-crack:
-      build:
-        context: ./jira-crack
