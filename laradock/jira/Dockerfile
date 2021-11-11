@@ -1,4 +1,4 @@
-FROM cptactionhank/atlassian-jira-software:latest
+FROM atlassian/jira-software
 
 USER root
 
