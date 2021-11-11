@@ -1447,14 +1447,10 @@ services:
         - RUNNER_NAME=${COMPOSE_PROJECT_NAME}-runner
         - REGISTER_NON_INTERACTIVE=${GITLAB_REGISTER_NON_INTERACTIVE}
         - RUNNER_EXECUTOR=docker
-        - DOCKER_IMAGE=latest
-        - DOCKER_NETWORK_MODE=laradock_backend
       volumes:
         - ${DATA_PATH_HOST}/gitlab/runner:/etc/gitlab-runner
         - /var/run/docker.sock:/var/run/docker.sock:rw
       restart: always
-      networks:
-        - backend
 
 ### JupyterHub #########################################
     jupyterhub:
@@ -2052,15 +2048,3 @@ services:
         - ${TARANTOOL_ADMIN_PORT}:80
       networks:
         - backend
-
-### jira ###########################################
-    jira:
-      build:
-        context: ./jira
-      ports:
-        - "8082:8080"
-      networks:
-        - backend
-      volumes:
-        - ${DATA_PATH_HOST}/jira:/var/atlassian/jira
-        - ./jira/atlassian-agent.jar:/var/atlassian/jira/atlassian-agent.jar
