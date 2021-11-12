@@ -2063,3 +2063,8 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/jira:/var/atlassian/jira
         - ./jira/atlassian-agent.jar:/var/atlassian/jira/atlassian-agent.jar
+
+### docker-registry-ui ###########################################
+    docker-registry-ui:
+      build:
+        context: ./docker-registry-ui
