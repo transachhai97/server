@@ -2060,3 +2060,18 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/jira:/var/atlassian/jira
         - ./jira/atlassian-agent.jar:/var/atlassian/jira/atlassian-agent.jar
+
+### docker-registry-ui ###########################################
+    docker-registry-ui:
+      build:
+        context: ./docker-registry-ui
+      ports:
+        - "8084:80"
+      environment:
+        - REGISTRY_TITLE=Private Docker Registry
+        - NGINX_PROXY_PASS_URL=http://103.3.254.126:${DOCKER_REGISTRY_PORT}
+        - SINGLE_REGISTRY=true
+      depends_on:
+        - docker-registry
+      networks:
+        - backend
