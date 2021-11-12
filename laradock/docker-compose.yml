@@ -1653,6 +1653,7 @@ services:
     docker-registry:
       build:
         context: ./docker-registry
+      container_name: docker-registry
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ${DATA_PATH_HOST}/docker-registry:/var/lib/registry
