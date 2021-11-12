@@ -1446,7 +1446,12 @@ services:
         - REGISTRATION_TOKEN=${GITLAB_RUNNER_REGISTRATION_TOKEN}
         - RUNNER_NAME=${COMPOSE_PROJECT_NAME}-runner
         - REGISTER_NON_INTERACTIVE=${GITLAB_REGISTER_NON_INTERACTIVE}
-        - RUNNER_EXECUTOR=shell
+#        - RUNNER_EXECUTOR=shell
+        - RUNNER_EXECUTOR=docker # change from shell (default)
+        - DOCKER_IMAGE=alpine
+        - DOCKER_NETWORK_MODE=${COMPOSE_PROJECT_NAME}_backend
+      networks:
+        - backend # connect to network where gitlab service is connected
       volumes:
         - ${DATA_PATH_HOST}/gitlab/runner:/etc/gitlab-runner
         - /var/run/docker.sock:/var/run/docker.sock:rw
