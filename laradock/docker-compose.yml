@@ -2069,7 +2069,7 @@ services:
       build:
         context: ./docker-registry-ui
       ports:
-        - "8083:80"
+        - "8084:80"
       environment:
         - REGISTRY_TITLE=My Private Docker Registry
         - NGINX_PROXY_PASS_URL=http://103.3.254.126:5000
